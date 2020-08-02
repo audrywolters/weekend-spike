@@ -1,6 +1,7 @@
 .coolBox {
     padding: 10px;
+    margin: 10px;
     border: solid 1px;
-    background-color: darkseagreen;
-    display: inline-block;
+    background-color: rgb(199, 214, 170);
+    width: 50%;
 }
