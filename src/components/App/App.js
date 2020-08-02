@@ -10,11 +10,17 @@ class App extends Component {
 
   addCoolBoxClick = () => {
     
+    // prepare to add a new box to the DOM
+    // and make items easy to read
     const coolBoxes = this.state.coolBoxList;
+    const newBox = <CoolBox key={ coolBoxes.length } 
+                            text={ coolBoxes.length } />;
 
+    // in order for the new box to appear above the old boxes
+    // make the new item an array
+    // then concat the existing boxes to the new box
     this.setState({
-      coolBoxList: coolBoxes.concat( <CoolBox key={ coolBoxes.length } 
-                                              text={ coolBoxes.length } /> )
+      coolBoxList: [ newBox ].concat( coolBoxes )
     });
   }
   
