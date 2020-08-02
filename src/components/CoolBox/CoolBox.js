@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { Component } from "react";
 import './CoolBox.css';
 
-function CoolBox() {
-  return (
-    <div className="coolBox">
-        hi
-    </div>
-  );
+
+class CoolBox extends Component {
+
+    render() {
+        return (
+            <div className="coolBox">
+                { this.props.coolText } 
+            </div>
+        );
+    }
 }
 
 export default CoolBox;

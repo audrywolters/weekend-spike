@@ -1,5 +1,6 @@
 .coolBox {
-    width: 30px;
-    height: 30px;
+    padding: 10px;
+    border: solid 1px;
     background-color: darkseagreen;
+    display: inline-block;
 }
