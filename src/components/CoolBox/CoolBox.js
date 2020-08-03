@@ -5,7 +5,7 @@ class CoolBox extends Component {
 
     render() {
         return (
-            <div className="coolBox">
+            <div className={ this.props.class }>
                 { this.props.text } 
             </div>
         );

@@ -8,52 +8,75 @@ class App extends Component {
     coolBoxList: []
   }
 
+  componentDidMount() {
+    this.newBoxDOM = React.createRef();
+  }
+
   addCoolBoxClick = () => {
     
     // prepare to add a new box to the DOM
     // and make items easy to read
     const coolBoxes = this.state.coolBoxList;
-    const newBox = <CoolBox key={ coolBoxes.length } 
+  
+    const newBox = <CoolBox key={ coolBoxes.length }
+                            // TBD alter with offsetHeight
+                            class={ 'coolBox' }
+                            ref={ this.newBoxDOM }
                             text={ coolBoxes.length } />;
 
-    // in order for the new box to appear above the old boxes
-    // make the new item an array
-    // then concat the existing boxes to the new box
+
+    // bla
     this.setState({
-      coolBoxList: [ newBox ].concat( coolBoxes )
+      coolBoxList: coolBoxes.concat( newBox )
     });
+
+    this.calcPosition();
+  }
+
+  calcPosition = () => {
+    console.log( 'gottenbydom: ', this.newBoxDOM );
+    // why 
+    //node.offsetHeight    
   }
   
   render() {    
     return (
-      <>
+      <div className="container">
         <button onClick={ this.addCoolBoxClick }>Add a Box!</button>
         <div>{ this.state.coolBoxList }</div>
-      </>
+      </div>
     );
   }
 }
 
 export default App;
 
-
 /*
 
-Array.prototype.push() adds an element into original array and returns an integer 
-which is its new array length.
+  constructor(props) {
+    super(props);
+    this.state = {
+        height: null
+    };
+    this.columns = ['hello', 
+                    'this is a bit more text', 
+                    'this is a bit more text ... and even more'];
+}
 
-Array.prototype.concat() returns a new array with concatenated element 
-without even touching in original array. 
-It's a shallow copy.
+render(){
+    return <div ref={(node) => this.calcHeight(node)}>
+             {
+                this.columns.map((column) => {
+                    return <div style={{height: this.state.height}}>{column}</div>
+                })
+             }
+           </div>;
+}
 
------
-
-You should use concat() function in place of push() because react does not work good 
-with object mutability react people emphasize react developers to keep the state of immutable.
-
-When you use concat() function it always returns a new object 
-rather than mutating the same old object 
-that is why you should never use push() function in react because 
-push mutates the old object.
-
+calcHeight(node) {
+    if (node && !this.state.height) {
+            this.setState({
+                height: node.offsetHeight
+            });
+  
 */

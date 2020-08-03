@@ -2,6 +2,13 @@
     padding: 10px;
     margin: 10px;
     border: solid 1px;
+    width: 300px;
     background-color: rgb(199, 214, 170);
     width: 40%;
+}
+
+.firstBoxFixed {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
 }
